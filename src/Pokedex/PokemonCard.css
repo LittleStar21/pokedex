@@ -1,6 +1,49 @@
-.pokemonCard {
+.pokemon-card {
   /* 24%: desktop, 48%: tablet, 98%: phone */
-  flex-basis: 24%;
-  min-height: 300px;
   border: 1px solid black;
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.pokemon-text {
+  text-align: center;
+}
+
+@media (min-width: 300px) {
+  .pokemon-card {
+    flex-basis: 98%;
+    min-height: 300px;
+    max-width: 400px;
+  }
+
+  img {
+    max-height: 120px;
+  }
+}
+
+@media (min-width: 550px) {
+  .pokemon-card {
+    flex-basis: 45%;
+    min-height: 300px;
+    max-width: 250px;
+  }
+
+  img {
+    max-height: 180px;
+  }
+}
+
+@media (min-width: 800px) {
+  .pokemon-card {
+    flex-basis: 24%;
+    min-height: 300px;
+    max-width: 250px;
+  }
+
+  img {
+    max-height: 170px;
+  }
 }

@@ -16,15 +16,23 @@ const PokemonCard = ({ pokemon }) => {
   };
 
   return (
-    <div className="pokemonCard">
-      {pokemonData.name && <img src={pokemonData.sprites.front_default} alt={pokemonData.name}></img>}
-      {pokemonData.name && <div>{firstLetterUpperCase(pokemonData.name)}</div>}
+    <div className="pokemon-card">
+      {pokemonData.id > 0 && <img src={pokemonData.sprites.other.dream_world.front_default} alt={pokemonData.name}></img>}
+      {pokemonData.id > 0 && <div className="pokemon-text">{formatPokemonName(pokemonData.id, pokemonData.name)}</div>}
     </div>
   );
 };
 
-const firstLetterUpperCase = (name) => {
-  return name[0].toUpperCase() + name.slice(1);
+const formatPokemonName = (id, name) => {
+  let pokemonId = id.toString();
+  if (pokemonId.length === 1) {
+    pokemonId = "#00" + pokemonId;
+  } else if (pokemonId.length === 2) {
+    pokemonId = "#0" + pokemonId;
+  } else {
+    pokemonId = "#" + pokemonId;
+  }
+  return pokemonId + name[0].toUpperCase() + name.slice(1);
 };
 
 export default PokemonCard;

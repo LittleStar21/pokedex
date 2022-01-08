@@ -16,16 +16,23 @@ const Pokedex = () => {
     const res = await fetch(apiLink);
     const json = await res.json();
     setPokemonApi(json.results);
-    setNextLink(json.next)
+    setNextLink(json.next);
+  };
+
+  const handleNextButton = async () => {
+    setApiLink(nextLink);
+    requestPokemon();
   };
 
   return (
+    <>
+    <button onClick={handleNextButton}>Next Button</button>
     <div className="card-container">
-      <button type="button" onClick={() => setApiLink(nextLink)}>Next button</button>
       {pokemonApi.map((pokemon, idx) => (
         <PokemonCard key={idx} pokemon={pokemon}></PokemonCard>
       ))}
     </div>
+    </>
   );
 };
 
