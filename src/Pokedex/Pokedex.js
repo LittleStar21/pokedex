@@ -1,29 +1,29 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import PokemonCard from "./PokemonCard";
+import "./Pokedex.css";
 
 const Pokedex = () => {
   const [pokemonApi, setPokemonApi] = useState([]);
-  
+  const [nextLink, setNextLink] = useState("");
+  const [apiLink, setApiLink] = useState("https://pokeapi.co/api/v2/pokemon/?limit=20");
+
   useEffect(() => {
     requestPokemon();
-  }, []);
+  }, [setApiLink]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const requestPokemon = async () => {
-    const res = await fetch(
-      "https://pokeapi.co/api/v2/pokemon/?limit=-1"
-    );
+    const res = await fetch(apiLink);
     const json = await res.json();
-    setPokemonApi(json.results.map(pokemon => pokemon.name));
-  };
-
-  const formatPokemonName = (pokemonName) => {
-    return pokemonName[0].toUpperCase() + pokemonName.slice(1);
+    setPokemonApi(json.results);
+    setNextLink(json.next)
   };
 
   return (
-    <div>
-      {pokemonApi.map((name) => (
-        <li key={name}>{formatPokemonName(name)}</li>
+    <div className="card-container">
+      <button type="button" onClick={() => setApiLink(nextLink)}>Next button</button>
+      {pokemonApi.map((pokemon, idx) => (
+        <PokemonCard key={idx} pokemon={pokemon}></PokemonCard>
       ))}
     </div>
   );

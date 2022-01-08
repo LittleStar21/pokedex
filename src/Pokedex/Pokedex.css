@@ -1,0 +1,8 @@
+.card-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  /* justify-content: center; */
+  /* align-content: space-evenly; */
+  border: 5px dotted blue;
+}

@@ -1,0 +1,6 @@
+.pokemonCard {
+  /* 24%: desktop, 48%: tablet, 98%: phone */
+  flex-basis: 24%;
+  min-height: 300px;
+  border: 1px solid black;
+}
