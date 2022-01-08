@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { useState, useEffect } from "react";
 import "./PokemonCard.css";
 
 const PokemonCard = ({ pokemon }) => {
@@ -17,8 +16,17 @@ const PokemonCard = ({ pokemon }) => {
 
   return (
     <div className="pokemon-card">
-      {pokemonData.id > 0 && <img src={pokemonData.sprites.other.dream_world.front_default} alt={pokemonData.name}></img>}
-      {pokemonData.id > 0 && <div className="pokemon-text">{formatPokemonName(pokemonData.id, pokemonData.name)}</div>}
+      {pokemonData.id > 0 && (
+        <img
+          src={pokemonData.sprites.other.dream_world.front_default}
+          alt={pokemonData.name}
+        ></img>
+      )}
+      {pokemonData.id > 0 && (
+        <div className="pokemon-text">
+          {formatPokemonName(pokemonData.id, pokemonData.name)}
+        </div>
+      )}
     </div>
   );
 };

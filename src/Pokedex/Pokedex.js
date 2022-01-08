@@ -1,12 +1,13 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PokemonCard from "./PokemonCard";
 import "./Pokedex.css";
 
 const Pokedex = () => {
   const [pokemonApi, setPokemonApi] = useState([]);
   const [nextLink, setNextLink] = useState("");
-  const [apiLink, setApiLink] = useState("https://pokeapi.co/api/v2/pokemon/?limit=20");
+  const [apiLink, setApiLink] = useState(
+    "https://pokeapi.co/api/v2/pokemon/?limit=20"
+  );
 
   useEffect(() => {
     requestPokemon();
@@ -26,12 +27,12 @@ const Pokedex = () => {
 
   return (
     <>
-    <button onClick={handleNextButton}>Next Button</button>
-    <div className="card-container">
-      {pokemonApi.map((pokemon, idx) => (
-        <PokemonCard key={idx} pokemon={pokemon}></PokemonCard>
-      ))}
-    </div>
+      <button onClick={handleNextButton}>Next Button</button>
+      <div className="card-container">
+        {pokemonApi.map((pokemon, idx) => (
+          <PokemonCard key={idx} pokemon={pokemon}></PokemonCard>
+        ))}
+      </div>
     </>
   );
 };
